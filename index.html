@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Tic Tac Toe</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>
+            <i class="fa-solid fa-gamepad"></i>
+            Tic Tac Toe
+        </h1>
+
+        <button id="themeBtn">
+            🌙 Theme
+        </button>
+
+    </div>
+
+    <div class="controls">
+
+        <div class="control-box">
+
+            <label>Game Mode</label>
+
+            <select id="gameMode">
+                <option value="pvp">
+                    Player vs Player
+                </option>
+
+                <option value="cpu">
+                    Player vs Computer
+                </option>
+            </select>
+
+        </div>
+
+        <div class="control-box">
+
+            <label>Difficulty</label>
+
+            <select id="difficulty">
+
+                <option value="easy">
+                    Easy
+                </option>
+
+                <option value="hard">
+                    Hard
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <div class="scoreboard">
+
+        <div class="score-card">
+            <h3>X Wins</h3>
+            <span id="xScore">0</span>
+        </div>
+
+        <div class="score-card">
+            <h3>O Wins</h3>
+            <span id="oScore">0</span>
+        </div>
+
+        <div class="score-card">
+            <h3>Draws</h3>
+            <span id="drawScore">0</span>
+        </div>
+
+    </div>
+
+    <div class="timer-box">
+
+        ⏳ Time Left:
+        <span id="timer">10</span>s
+
+    </div>
+
+    <div id="status">
+
+        Player X's Turn
+
+    </div>
+
+    <div class="board">
+
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+
+    </div>
+
+    <div class="buttons">
+
+        <button id="newGame">
+
+            New Game
+
+        </button>
+
+        <button id="resetScores">
+
+            Reset Scores
+
+        </button>
+
+    </div>
+
+    <div class="history">
+
+        <h2>
+
+            Match History
+
+        </h2>
+
+        <ul id="historyList">
+
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="winner-modal" id="winnerModal">
+
+    <div class="modal-content">
+
+        <h2 id="winnerText">
+
+        </h2>
+
+        <button id="closeModal">
+
+            Play Again
+
+        </button>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
