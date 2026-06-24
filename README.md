@@ -8,23 +8,22 @@ SkillCraft Technology Internship
 
 - Player vs Player Mode
 - Player vs Computer Mode
-- Easy AI
-- Hard AI
-- Scoreboard
+- Easy Difficulty
+- Medium Difficulty
+- Hard Difficulty
+- Smart AI Opponent
+- Scoreboard Tracking
 - Match History
-- Winner Popup
+- Winner Popup Modal
 - Turn Timer
-- Theme Toggle
+- Theme Toggle (Dark/Light Mode)
 - Responsive Design
 - Glassmorphism UI
-- Animated Background
+- Animated Gradient Background
+- Auto Game Reset on Mode Change
 
 ### Technologies Used
 
 - HTML
 - CSS
 - JavaScript
-
-### Author
-
-Kirisha M
