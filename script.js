@@ -96,6 +96,32 @@ themeBtn.addEventListener(
     }
 );
 
+gameMode.addEventListener(
+    "change",
+    () => {
+
+        resetBoard();
+
+        addHistory(
+            "🔄 Game Mode Changed"
+        );
+
+    }
+);
+
+difficulty.addEventListener(
+    "change",
+    () => {
+
+        resetBoard();
+
+        addHistory(
+            "⚙️ Difficulty Changed"
+        );
+
+    }
+);
+
 function handleCellClick(){
 
     const index =
@@ -157,25 +183,53 @@ function computerMove(){
 
     let move;
 
-    if(
-        difficulty.value === "hard"
-    ){
+    if(difficulty.value === "hard"){
 
-        move =
-        getBestMove();
+        move = getBestMove();
+    }
 
-    }else{
+    else if(difficulty.value === "medium"){
+
+        if(Math.random() < 0.6){
+
+            move = getBestMove();
+
+        }else{
+
+            const emptyCells =
+            board
+            .map(
+                (cell,index)=>
+                cell === ""
+                ? index
+                : null
+            )
+            .filter(
+                cell => cell !== null
+            );
+
+            move =
+            emptyCells[
+                Math.floor(
+                    Math.random() *
+                    emptyCells.length
+                )
+            ];
+        }
+    }
+
+    else{
 
         const emptyCells =
         board
         .map(
             (cell,index)=>
-            cell===""
+            cell === ""
             ? index
             : null
         )
         .filter(
-            cell=>cell!==null
+            cell => cell !== null
         );
 
         move =
@@ -294,14 +348,9 @@ function checkWinner(){
 
         ){
 
-            cells[a]
-            .classList.add("win");
-
-            cells[b]
-            .classList.add("win");
-
-            cells[c]
-            .classList.add("win");
+            cells[a].classList.add("win");
+            cells[b].classList.add("win");
+            cells[c].classList.add("win");
 
             gameActive = false;
 
@@ -314,14 +363,12 @@ function checkWinner(){
             ){
 
                 xScore++;
-
                 xScoreEl.textContent =
                 xScore;
 
             }else{
 
                 oScore++;
-
                 oScoreEl.textContent =
                 oScore;
             }
@@ -441,6 +488,7 @@ function startTimer(){
         if(timer <= 0){
 
             switchPlayer();
+
         }
 
     },1000);
