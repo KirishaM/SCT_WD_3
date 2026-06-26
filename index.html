@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Tic Tac Toe</title>
-
     <link rel="stylesheet" href="style.css">
-
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -17,158 +14,122 @@
 
 <div class="container">
 
+    <!-- HEADER -->
     <div class="header">
-
         <h1>
             <i class="fa-solid fa-gamepad"></i>
             Tic Tac Toe
         </h1>
-
-        <button id="themeBtn">
-            🌙 Theme
-        </button>
-
+        <button id="themeBtn">☀️ Light Mode</button>
     </div>
 
+    <!-- PLAYER NAMES -->
+    <div class="player-names">
+        <div class="name-group x-group">
+            <label>Player X Name</label>
+            <input type="text" id="nameX" placeholder="Enter name..." value="Player X" maxlength="12">
+        </div>
+        <div class="name-group o-group">
+            <label>Player O Name</label>
+            <input type="text" id="nameO" placeholder="Enter name..." value="Player O" maxlength="12">
+        </div>
+    </div>
+
+    <!-- CONTROLS -->
     <div class="controls">
-
         <div class="control-box">
-
             <label>Game Mode</label>
-
             <select id="gameMode">
-                <option value="pvp">
-                    Player vs Player
-                </option>
-
-                <option value="cpu">
-                    Player vs Computer
-                </option>
+                <option value="pvp">Player vs Player</option>
+                <option value="cpu">Player vs Computer</option>
             </select>
-
         </div>
-
-        <div class="control-box">
-
+        <div class="control-box" id="playAsBox">
+            <label>You Play As</label>
+            <select id="playAs">
+                <option value="X">X (Goes First)</option>
+                <option value="O">O (Goes Second)</option>
+            </select>
+        </div>
+        <div class="control-box" id="diffBox">
             <label>Difficulty</label>
-
             <select id="difficulty">
-
-                <option value="easy">
-                    Easy
-                </option>
-
-                <option value="medium">
-                    Medium
-                </option>
-
-                <option value="hard">
-                    Hard
-                </option>
-
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
             </select>
-
         </div>
-
     </div>
 
+    <!-- SCOREBOARD -->
     <div class="scoreboard">
-
-        <div class="score-card">
-            <h3>X Wins</h3>
+        <div class="score-card x-card">
+            <h3 id="xLabel">Player X</h3>
             <span id="xScore">0</span>
         </div>
-
-        <div class="score-card">
-            <h3>O Wins</h3>
-            <span id="oScore">0</span>
-        </div>
-
-        <div class="score-card">
+        <div class="score-card d-card">
             <h3>Draws</h3>
             <span id="drawScore">0</span>
         </div>
-
+        <div class="score-card o-card">
+            <h3 id="oLabel">Player O</h3>
+            <span id="oScore">0</span>
+        </div>
     </div>
 
+    <!-- TIMER -->
     <div class="timer-box">
-
-        ⏳ Time Left:
-        <span id="timer">10</span>s
-
+        <div class="timer-info">
+            <span id="timerDisplay">⏳ Time Left: <span id="timer">15</span>s</span>
+            <span id="status">Player X's Turn</span>
+        </div>
+        <div class="timer-track">
+            <div class="timer-fill" id="timerFill"></div>
+        </div>
     </div>
 
-    <div id="status">
-
-        Player X's Turn
-
-    </div>
-
+    <!-- BOARD -->
     <div class="board">
-
         <div class="cell" data-index="0"></div>
         <div class="cell" data-index="1"></div>
         <div class="cell" data-index="2"></div>
-
         <div class="cell" data-index="3"></div>
         <div class="cell" data-index="4"></div>
         <div class="cell" data-index="5"></div>
-
         <div class="cell" data-index="6"></div>
         <div class="cell" data-index="7"></div>
         <div class="cell" data-index="8"></div>
-
     </div>
 
+    <!-- BUTTONS -->
     <div class="buttons">
-
-        <button id="newGame">
-
-            New Game
-
-        </button>
-
-        <button id="resetScores">
-
-            Reset Scores
-
-        </button>
-
+        <button id="newGame">▶ New Game</button>
+        <button id="resetScores" class="btn-danger">✕ Reset Scores</button>
     </div>
 
+    <!-- MATCH HISTORY -->
     <div class="history">
-
-        <h2>
-
-            Match History
-
-        </h2>
-
-        <ul id="historyList">
-
-        </ul>
-
+        <div class="history-header" id="historyToggle">
+            <h2><i class="fa-solid fa-clock-rotate-left"></i> Match History</h2>
+            <span id="toggleIcon">▼ Show</span>
+        </div>
+        <ul id="historyList" class="hidden"></ul>
     </div>
 
 </div>
 
+<!-- WIN MODAL -->
 <div class="winner-modal" id="winnerModal">
-
     <div class="modal-content">
-
-        <h2 id="winnerText">
-
-        </h2>
-
-        <button id="closeModal">
-
-            Play Again
-
-        </button>
-
+        <div class="modal-emoji" id="modalEmoji">🏆</div>
+        <h2 id="winnerText"></h2>
+        <p id="winnerSub">Great game! Play again?</p>
+        <button id="closeModal">Play Again</button>
     </div>
-
 </div>
+
+<!-- CONFETTI CONTAINER -->
+<div id="confettiContainer"></div>
 
 <script src="script.js"></script>
 
